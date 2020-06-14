@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="card">
+        <div class="card-header"
+             style="color: #f58c83; border-top: #f58c83 5px solid; border-bottom: #f5c1bd 2px solid">
+            <h4>Delete Post</h4>
+        </div>
+        <div class="card-body">
+            {#            <h5 class="card-title" style="color: #f58c83">Register</h5>#}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h6>Are you sure you want to delete the post {{ object.title }}?</h6>
+                    <button type="submit" class="btn btn-outline-danger">Yes,Delete</button>
+                    <a href="{% url 'post-detail' object.id %}" class=" btn btn-outline-secondary">Cancel</a>
+                </div>
+                <hr>
+            </form>
+        </div>
+    </div>
+{% endblock %}

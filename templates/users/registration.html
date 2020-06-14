@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{#to use crispy tags to filter we need to load#}
+{% block content %}
+    <div class="card">
+        <div class="card-header"
+             style="color: #f58c83; border-top: #f58c83 5px solid; border-bottom: #f5c1bd 2px solid">
+            <h4>Join Today</h4>
+        </div>
+        <div class="card-body">
+            {#            <h5 class="card-title" style="color: #f58c83">Register</h5>#}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div>{{ form|crispy }}</div>
+                    <button type="submit" class="btn btn-outline-primary"
+                            style="background-color: #f58c83; color: whitesmoke; border: #f58c83 ">Sign Up
+                    </button>
+                </div>
+                <hr>
+                <small class="text-muted">Already have an account?<a href="{% url 'login' %}" class="ml-2">Sign-In</a></small>
+            </form>
+        </div>
+    </div>
+{% endblock %}

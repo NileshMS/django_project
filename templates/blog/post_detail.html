@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="col-8" style="margin-left: 90px">
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-header" style="border-top: #f58c83 5px solid; background-color: #f7e0de">
+                <h3>{{ object.title }}</h3>
+                {% if object.author == user %}
+                    <a class="btn btn-sm btn-secondary" href="{% url 'post-update' object.id %}">Update</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'post-delete' object.id %}">Delete</a>
+                {% endif %}
+            </div>
+            <div class="card-body" style="border-top: #f58c83 2px solid;">
+                <h4 class="card-title"><a href="{% url 'user-posts' object.author.username %}"
+                                          style="text-decoration: none">{{ object.author }}</a></h4>
+                <small class="text-muted" style="text-align: right">{{ object.date_posted|date:"F d, Y" }}</small>
+                <p class="card-text">{{ object.content }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
